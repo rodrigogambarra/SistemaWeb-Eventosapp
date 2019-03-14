@@ -1,9 +1,43 @@
 package com.eventosapp.eventosapp.models;
 
-public class Evento {
+import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+
+@Entity
+public class Evento implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long codigo;
+
+    @NotEmpty
     private String nome;
+
+    @NotEmpty
     private String local;
+
+    @NotEmpty
+    private String data;
+
+    @NotEmpty
+    private String horario;
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
 
     public String getNome() {
         return nome;
@@ -36,10 +70,5 @@ public class Evento {
     public void setHorario(String horario) {
         this.horario = horario;
     }
-
-    private String data;
-    private String horario;
-
-
 
 }
