@@ -16,27 +16,28 @@
 <body>
 
     <h1>Lista de Eventos</h1>
-    <h3><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Cadastrar de Eventos</a></h3>
-    <table>
+    <h3><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></h3>
+    <div class="container">
+      <table>
         <thead>
-        <tr>
-            <th>nome</th>
-            <th>local</th>
-            <th>data</th>
-            <th>horário</th>
-        </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Local</th>
+                <th>Data</th>
+                <th>Horário</th>
+            </tr>
         </thead>
         <tbody>
-    <tr th:each="evento : ${eventos}"><!--para cada evento pega do objeto e manda para a viw-->
+            <tr th:each="evento : ${eventos}"><!--para cada evento pega do objeto e manda para a viw-->
 
-            <th><span th:text="${evento.nome}"</span></th>
-            <th><span th:text="${evento.local}"</span></th>
-            <th><span th:text="${evento.data}"</span></th>
-            <th><span th:text="${evento.horario}"</span></th>
-    </tr>
+                <th><span th:text="${evento.nome}"</span></th>
+                <th><span th:text="${evento.local}"</span></th>
+                <th><span th:text="${evento.data}"</span></th>
+                <th><span th:text="${evento.horario}"</span></th>
+            </tr>
         </tbody>
-    </table>
-
+       </table>
+    </div>
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script> <!--configuração do materialize-->

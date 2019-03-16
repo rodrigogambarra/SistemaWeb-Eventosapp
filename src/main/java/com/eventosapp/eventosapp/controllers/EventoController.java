@@ -15,15 +15,15 @@ public class EventoController {
     private EventoRepository er;
 
 
-    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.GET)
+    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.GET)//quando entrar nesta url
     public String form(){
-        return "evento/formEvento";
+        return "evento/formEvento";//executar este arquivo html
     }
 
-    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)
+    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)//quando ter um post desta url
     public String form(Evento evento){
         er.save(evento);
-        return "redirect:/cadastrarEvento";
+        return "redirect:/cadastrarEvento";//redirecionar para este url
     }
 
     @RequestMapping("/eventos")
