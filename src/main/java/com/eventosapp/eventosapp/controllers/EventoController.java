@@ -30,7 +30,7 @@ public class EventoController {
     public ModelAndView listaEventos(){
         ModelAndView mv = new ModelAndView("/index");//Qual página ele vai renderizar para /eventos
         Iterable<Evento> eventos = er.findAll();
-        mv.addObject("evento", eventos);//adiciona a palavra entre {} na view;
+        mv.addObject("eventos", eventos);//adiciona a palavra entre {} na view;
         return mv;
     }
 }
