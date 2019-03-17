@@ -67,8 +67,12 @@ public class Evento implements Serializable {
         return horario;
     }
 
-    public void setHorario(String horario) {
+    public void setHorario(String horario)
+    {
         this.horario = horario;
     }
-
+    @Override
+    public String toString() {
+        return  "\ncodigo: " + codigo + "\nnome: " + nome + "\nlocal: " + local + "\ndata: " + data+ "\nhorario: " + horario + "\n\n";
+    }
 }
