@@ -27,13 +27,24 @@
         <h4>Adicionar convidado ao evento:</h4>
 
         <form method="post">
-            Nome do convidado: <input type="text" value="" name="nomeConvidado"/>
-            RG do convidado: <input type="text" value="" name="rg"/>
+            Nome: <input type="text" value="" name="nomeConvidado"/>
+            RG: <input type="text" value="" name="rg"/>
             <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Adicionar</button>
-
         </form>
 
+        <h5>Lista de Convidados</h5>
     </div>
+
+        <div class="container" th:each="convidado : ${convidados}"><!--Para cada objeto convidado-->
+            <div class="row"> <!--para mostrar nome e RG na mesma linha-->
+                <div class="input-field col s6"><!--para mostrar nome e RG na mesma linha-->
+                    <span th:text="${convidado.nomeConvidado}"></span>
+                </div>
+                <div class="input-field col s3"><!--para mostrar nome e RG na mesma linha-->
+                    <span th:text="${convidado.rg}"></span>
+                </div>
+            </div>
+        </div>
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="materialize/js/materialize.min.js" type="text/javascript"></script> <!--configuração do materialize-->
