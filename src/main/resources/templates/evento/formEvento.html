@@ -16,6 +16,7 @@
 
         <H1>Cadastro de Eventos</H1>
         <h3><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">view_headline</i>Lista de Eventos</a></h3>
+        <th:block th:include="mensagemValidacao"></th:block>
             <form class="container" method = "post">
                 <div class="row">
                         Nome<input name="nomeEvento" type="text" value="">

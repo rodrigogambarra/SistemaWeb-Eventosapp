@@ -26,6 +26,8 @@
 
         <h4>Adicionar convidado ao evento:</h4>
 
+        <th:block th:include="mensagemValidacao"></th:block>
+
         <form method="post">
             Nome: <input type="text" value="" name="nomeConvidado"/>
             RG: <input type="text" value="" name="rg"/>
