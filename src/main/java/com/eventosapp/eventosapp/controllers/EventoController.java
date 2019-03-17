@@ -1,6 +1,8 @@
 package com.eventosapp.eventosapp.controllers;
 
+import com.eventosapp.eventosapp.models.Convidado;
 import com.eventosapp.eventosapp.models.Evento;
+import com.eventosapp.eventosapp.repository.ConvidadoRepository;
 import com.eventosapp.eventosapp.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ public class EventoController {
 
     @Autowired
     private EventoRepository er;
+
+    @Autowired
+    private ConvidadoRepository cr;
 
 
     @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.GET)//quando entrar nesta url
@@ -35,12 +40,20 @@ public class EventoController {
         return mv;
     }
 
-    @RequestMapping(value = "/{codigo}")
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
     public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo){
         Evento evento = er.findByCodigo(codigo);
         ModelAndView mv = new ModelAndView("evento/detalhesEvento");
         mv.addObject("evento", evento);
         System.out.println("AQUI ESTA O EVENTO: " + evento.toString());
         return mv;
+    }
+
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
+    public String detalhesEventoPost(@PathVariable("codigo") long codigo, Convidado convidado){//nome do método deve ser difeirente do outro para funcionar os links da página index
+        Evento evento = er.findByCodigo(codigo);
+        convidado.setEvento(evento);
+        cr.save(convidado);
+        return "redirect:/{codigo}";
     }
 }

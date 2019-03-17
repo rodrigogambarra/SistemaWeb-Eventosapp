@@ -1,14 +1,9 @@
 package com.eventosapp.eventosapp.models;
 
-import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Evento implements Serializable {
@@ -16,11 +11,11 @@ public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codigo;
 
     @NotEmpty
-    private String nome;
+    private String nomeEvento;
 
     @NotEmpty
     private String local;
@@ -31,6 +26,10 @@ public class Evento implements Serializable {
     @NotEmpty
     private String horario;
 
+    @OneToMany
+    private List<Convidado> convidados;
+
+
     public long getCodigo() {
         return codigo;
     }
@@ -39,12 +38,10 @@ public class Evento implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNomeEvento() { return nomeEvento; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeEvento(String nome) {
+        this.nomeEvento = nome;
     }
 
     public String getLocal() {
@@ -71,8 +68,17 @@ public class Evento implements Serializable {
     {
         this.horario = horario;
     }
+
+    public List<Convidado> getConvidados() {
+        return convidados;
+    }
+
+    public void setConvidados(List<Convidado> convidados) {
+        this.convidados = convidados;
+    }
+
     @Override
     public String toString() {
-        return  "\ncodigo: " + codigo + "\nnome: " + nome + "\nlocal: " + local + "\ndata: " + data+ "\nhorario: " + horario + "\n\n";
+        return  "\ncodigo: " + codigo + "\nnome: " + nomeEvento + "\nlocal: " + local + "\ndata: " + data+ "\nhorario: " + horario + "\n\n";
     }
 }

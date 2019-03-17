@@ -29,7 +29,7 @@ public class DataConfiguration {
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);//mostra todas as percistencias no terminal durante a execução
         adapter.setGenerateDdl(true);//cria automaticamente as tabelas no banco
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");//Dialect.MySQL5Dialect - força o hibernate utilizar Engine em vez de Type
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL55Dialect");//Dialect.MySQL5Dialect - força o hibernate utilizar Engine em vez de Type
         adapter.setPrepareConnection(true);//hibernate se conectar automaticamente
         return adapter;
     }
