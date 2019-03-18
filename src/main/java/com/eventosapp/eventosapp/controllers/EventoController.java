@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 
 @Controller
@@ -60,6 +59,13 @@ public class EventoController {
         mv.addObject("convidados",convidados);
         System.out.println("AQUI ESTA O EVENTO: " + evento.toString());
         return mv;
+    }
+
+    @RequestMapping("/deletar")
+    public String deletarEvento(long codigo){
+        Evento evento = er.findByCodigo(codigo);
+        er.delete(evento);
+        return "redirect:/eventos";
     }
 
     @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)

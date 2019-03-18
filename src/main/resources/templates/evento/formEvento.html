@@ -8,16 +8,25 @@
         <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>      <!--configuração do materialize-->
 
         <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>                                 <!--configuração do materialize-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--configuração do materialize-->
+
+        <link rel="stylesheet" href="style/styleCss.css"/> <!--chamada para o arquivo Css-->
 
         <title>Eventos App</title>
     </head>
     <body>
-
-        <H1>Cadastro de Eventos</H1>
-        <h3><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">view_headline</i>Lista de Eventos</a></h3>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Cadastro de Eventos</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">add_circle_outline</i>Lista de Eventos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
         <th:block th:include="mensagemValidacao"></th:block>
-            <form class="container" method = "post">
+            <form class="container formEvento" method = "post">
                 <div class="row">
                         Nome<input name="nomeEvento" type="text" value="">
                     <div class="input-field col s6">
