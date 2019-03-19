@@ -1,6 +1,7 @@
-package com.eventosapp.eventosapp;
+package com.eventosapp.eventosapp.data;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import javax.sql.DataSource;
 
 @Controller
+@Profile("dev")
 public class DataConfiguration {
 
     @Bean
