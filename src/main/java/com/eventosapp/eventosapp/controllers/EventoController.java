@@ -38,14 +38,14 @@ public class EventoController {
         }
         er.save(evento);
         attributes.addFlashAttribute("mensagem","Evento cadastrado com sucesso!");
-        return "redirect:/cadastrarEvento";//redirecionar para este url
+        return "redirect:/cadastrarEvento";//redireciona para /cadastrarEvento com método get
     }
 
     @RequestMapping("/eventos")
     public ModelAndView listaEventos(){
         ModelAndView mv = new ModelAndView("index");//Qual página ele vai renderizar para /eventos
         Iterable<Evento> eventos = er.findAll();
-        mv.addObject("eventos", eventos);//adiciona a palavra entre {} na view;
+        mv.addObject("eventos", eventos);//renderiza a página index vinculando a variável eventos com a lista de eventos;
         return mv;
     }
 
