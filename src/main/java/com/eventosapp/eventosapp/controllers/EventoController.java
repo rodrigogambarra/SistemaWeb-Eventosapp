@@ -24,13 +24,12 @@ public class EventoController {
     @Autowired
     private ConvidadoRepository cr;
 
-
     @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.GET)//quando entrar nesta url
     public String form(){
         return "evento/formEvento";//executar este arquivo html
     }
 
-    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)//quando ter um post desta url
+    @RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)//quando um post desta url
     public String form(@Valid Evento evento, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem","Verifique os campos");
@@ -43,7 +42,7 @@ public class EventoController {
 
     @RequestMapping("/eventos")
     public ModelAndView listaEventos(){
-        ModelAndView mv = new ModelAndView("index");//Qual página ele vai renderizar para /eventos
+        ModelAndView mv = new ModelAndView("listaEventos");//Qual página ele vai renderizar para /eventos
         Iterable<Evento> eventos = er.findAll();
         mv.addObject("eventos", eventos);//renderiza a página index vinculando a variável eventos com a lista de eventos;
         return mv;
@@ -57,7 +56,6 @@ public class EventoController {
 
         Iterable<Convidado>convidados = cr.findByEvento(evento);
         mv.addObject("convidados",convidados);
-        System.out.println("AQUI ESTA O EVENTO: " + evento.toString());
         return mv;
     }
 
