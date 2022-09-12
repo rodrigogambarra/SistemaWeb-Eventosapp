@@ -2,8 +2,10 @@ package com.eventosapp.eventosapp.controllers;
 
 import com.eventosapp.eventosapp.models.Convidado;
 import com.eventosapp.eventosapp.models.Evento;
+import com.eventosapp.eventosapp.models.Usuario;
 import com.eventosapp.eventosapp.repository.ConvidadoRepository;
 import com.eventosapp.eventosapp.repository.EventoRepository;
+import com.eventosapp.eventosapp.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
