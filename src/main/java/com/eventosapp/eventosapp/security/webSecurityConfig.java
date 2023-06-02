@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -17,6 +18,9 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private ImplementsUserDetailsService userDetailsService;
+
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -32,14 +36,17 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter {
                                         .antMatchers(HttpMethod.POST,"/cadastrarEvento").hasRole("ADMIN")
 
                                         .anyRequest().authenticated()
-                                        .and().formLogin().permitAll()
-                                        .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                                        .and().formLogin().loginPage("/login").permitAll()
+                                        .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                        .and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
+
+        auth.inMemoryAuthentication().withUser("Administrator").password("{noop}123").roles("ADMIN");
     }
 
     @Override
