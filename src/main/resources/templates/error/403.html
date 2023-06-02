@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>                 <!--configuração do materialize-->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>      <!--configuração do materialize-->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>                                 <!--configuração do materialize-->
+
+    <link rel="stylesheet" href="style/styleCss.css"/> <!--chamada para o arquivo Css-->
+
+    <title>Eventos App</title>
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <div class="nav-wrapper">
+            <a href="eventos" class="brand-logo">Lista de Eventos</a>
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>403 - Access is denied</h1>
+        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]', you do not have permission to access this page.</div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+</body>
+</html>
